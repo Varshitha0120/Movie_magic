@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 dynamodb = boto3.resource('dynamodb',region_name='us-east-1')
 MovieBookings=dynamodb.Table('MovieBookings')
-SNS=boto3.client('SNS',region_name='us-east-1')
+SNS = boto3.client('sns', region_name='your-region')
 SNS_topic_arn='arn:aws:sns:us-east-1:545009839820:Movie_booking'
 # List of Movies with Details
 movies = [
