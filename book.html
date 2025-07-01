@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Ticket | Movie Magic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="movie-card" style="margin:auto; width: 300px;">
+        <h2>Book Your Ticket</h2>
+        <img src="{{ url_for('static', filename=movie.image) }}" alt="{{ movie.title }}" style="width:100%; border-radius: 10px;">
+        <h3>{{ movie.title }}</h3>
+        <p><strong>Show Time:</strong> {{ movie.show_time }}</p>
+        <p><strong>Price:</strong> ₹{{ movie.price }}</p>
+        <form method="POST" action="{{ url_for('confirm_booking') }}">
+            <input type="hidden" name="movie_title" value="{{ movie.title }}">
+            <label>Your Name:</label><br>
+            <input type="text" name="name" required><br><br>
+            <label>Number of Seats:</label><br>
+            <input type="number" name="seats" min="1" required><br><br>
+            <button type="submit" class="book-btn">Confirm Booking</button>
+        </form>
+    </div>
+</body>
+</html>

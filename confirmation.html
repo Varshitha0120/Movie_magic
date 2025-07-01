@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmed | Movie Magic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="movie-card" style="margin:auto; width: 300px;">
+        <h2>🎉 Booking Confirmed!</h2>
+        <p><strong>Name:</strong> {{ name }}</p>
+        <p><strong>Movie:</strong> {{ movie_title }}</p>
+        <p><strong>Seats:</strong> {{ seats }}</p>
+        <p style="color: green;"><strong>Enjoy your movie! 🍿</strong></p>
+        <a href="{{ url_for('show_movies') }}" class="book-btn">Back to Movies</a>
+    </div>
+</body>
+</html>

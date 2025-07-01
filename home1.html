@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome - Movie Magic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <a href="{{ url_for('contact') }}">Contact Us</a>
+</head>
+<body>
+    <div class="container">
+        <h2>🎬 Welcome, {{ session['user']['name'] }}!</h2>
+
+        <div class="nav-buttons">
+            <a href="{{ url_for('about') }}" class="btn">About</a>
+            <a href="{{ url_for('contact') }}" class="btn">Contact</a>
+            <a href="{{ url_for('b1') }}" class="btn">Book Ticket</a>
+            <a href="{{ url_for('logout') }}" class="btn logout">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
