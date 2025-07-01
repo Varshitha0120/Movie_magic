@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Now Showing | Movie Magic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2 style="text-align:center;">Now Showing</h2>
+    <div class="movie-container">
+        {% for movie in movies %}
+        <div class="movie-card">
+            <img src="{{ url_for('static', filename=movie.image) }}" alt="{{ movie.title }}">
+            <h3>{{ movie.title }}</h3>
+            <p><strong>Show Time:</strong> {{ movie.show_time }}</p>
+            <p><strong>Price:</strong> ₹{{ movie.price }}</p>
+            <p><strong>⭐ Rating:</strong> {{ movie.rating }}/5</p>
+            <a href="{{ url_for('book_movie', title=movie.title) }}" class="book-btn">🎟 Book Now</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
