@@ -4,7 +4,7 @@ import uuid
 from datetime import datetime
 
 app = Flask(_name_)
-app.secret_key = 'your_secret_key_here'
+app.secret_key = '9a4f90b2b6df594f2e16f6c1f3d9e0ab0cd431c0f0176a2544e740c94cb75a0e'
 
 # AWS Setup
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
