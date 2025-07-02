@@ -2,6 +2,63 @@ from flask import Flask, render_template, request, redirect, session, flash, url
 import boto3
 app = Flask(__name__)
 app.secret_key = '9a4f90b2b6df594f2e16f6c1f3d9e0ab0cd431c0f0176a2544e740c94cb75a0e'
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        fname = request.form.get('fname')
+        lname = request.form.get('lname')
+        email = request.form.get('email')
+        password = request.form.get('setPwd')
+        confirm_password = request.form.get('confirmPwd')
+
+        if not all([fname, lname, email, password, confirm_password]):
+            return "All fields are required.", 400
+
+        if password != confirm_password:
+            return "Passwords do not match.", 400
+
+        # Check if user already exists
+        try:
+            existing = users_table.get_item(Key={"email": email}).get("Item")
+            if existing:
+                return "User already registered.", 400
+        except Exception as e:
+            print("Error checking user:", e)
+            return "Database error", 500
+
+        # Insert user
+        try:
+            users_table.put_item(Item={
+                "first_name": fname,
+                "last_name": lname,
+                "email": email,
+                "password": password
+            })
+            return redirect(url_for('index'))
+        except Exception as e:
+            print("Error inserting user:", e)
+            return "Registration failed", 500
+
+    return render_template('register.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        try:
+            user = users_table.get_item(Key={"email": email}).get("Item")
+            if user and user['password'] == password:
+                session['user'] = email
+                return redirect(url_for('main'))
+        except Exception as e:
+            print("Login error:", e)
+
+        flash("Invalid credentials")
+        return redirect(url_for('login'))
+
+    return render_template('login.html')
 
 # AWS Services Configuration
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
