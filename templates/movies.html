@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Movies</title></head>
+<body style="background: #111; color: white; font-family: Arial;">
+  <h2>Welcome, {{ session['user'] }}!</h2>
+  <h3>Now Showing:</h3>
+  <div style="display: flex; flex-wrap: wrap;">
+    {% for movie in movies %}
+      <div style="background: #222; margin:10px; padding:15px; border-radius:10px; width:220px;">
+        <img src="{{ url_for('static', filename=movie.image) }}" width="200"><br>
+        <strong>{{ movie.title }}</strong><br>
+        {{ movie.show_time }}<br>
+        ₹{{ movie.price }} | ⭐ {{ movie.rating }}<br>
+        <a href="{{ url_for('book_movie', title=movie.title) }}" style="color: lightgreen;">Book</a>
+      </div>
+    {% endfor %}
+  </div>
+  <br><a href="{{ url_for('logout') }}" style="color: orange;">Logout</a>
+</body>
+</html>

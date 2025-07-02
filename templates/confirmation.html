@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head><title>Confirmed!</title></head>
+<body style="background: black; color: lightgreen; text-align: center; padding: 100px;">
+  <h1>✅ Booking Confirmed</h1>
+  <p>Thanks, {{ name }}!</p>
+  <p>You booked {{ seats }} seat(s) for <strong>{{ movie.title }}</strong>.</p>
+  <p>Total Price: ₹{{ total_price }}</p>
+  <br><a href="{{ url_for('show_movies') }}" style="color: cyan;">Back to Movies</a>
+</body>
+</html>
