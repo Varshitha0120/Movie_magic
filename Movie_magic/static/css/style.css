@@ -1,0 +1,125 @@
+/* Base Styling */
+body {
+  background: linear-gradient(135deg, lightpink, lightyellow, lightgreen, black);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: #111;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #007744;
+}
+
+/* Header Titles */
+h1, h2, h3 {
+  color: #222;
+  text-shadow: none;
+}
+
+/* Buttons */
+.btn {
+  background-color: #ffb6c1; /* Light pink */
+  color: black;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+  background-color: #ff69b4; /* Deeper pink */
+}
+
+/* Navbar */
+.navbar-custom {
+  background-color: lightgreen;
+  border-bottom: 2px solid #444;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+  color: black !important;
+  font-weight: bold;
+}
+
+.navbar-custom .nav-link:hover {
+  color: darkgreen !important;
+}
+
+/* Input Fields */
+input, select, textarea {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+input:focus, textarea:focus {
+  border-color: #ffa07a;
+  box-shadow: 0 0 5px #ffa07a;
+}
+
+/* Forms and Boxes */
+.form-box, .ticket-box, .login-box, .reset-box, .verify-box, .contact-box {
+  background-color: #fffaf0; /* light cream */
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+}
+
+/* Movie Cards */
+.movie-card {
+  background-color: #fef6f9;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.movie-img {
+  height: 300px;
+  object-fit: cover;
+  border-bottom: 3px solid lightpink;
+}
+
+/* Admin Table */
+.table-dark th {
+  background-color: #f8f8f8 !important;
+  color: #111;
+}
+
+/* Success Icon */
+.emoji {
+  font-size: 3rem;
+  text-shadow: 0 0 5px lightgreen;
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  padding: 10px;
+  text-align: center;
+  color: #555;
+  font-size: 0.9rem;
+}
